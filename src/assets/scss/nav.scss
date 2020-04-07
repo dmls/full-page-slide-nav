@@ -1,0 +1,29 @@
+.fpsNav {
+    display: none;
+}
+
+.fpsNav-desktop {
+    &.active {
+        display: block;
+    }
+}
+
+.fpsNav-mobile {
+    &.active {
+        display: none;
+    }
+}
+
+@media screen and (max-width: $mobileBreak) {
+    .fpsNav-desktop {
+        &.active {
+            display: none;
+        }
+    }
+
+    .fpsNav-mobile {
+        &.active {
+            display: block;
+        }
+    }
+}
