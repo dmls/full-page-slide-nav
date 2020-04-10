@@ -1,43 +1,46 @@
 import React from 'react';
 
-/*
-1. Will have method that triggers 'active' so that 
-users can create an instance of the element and decide
-what triggers it.
-2. Will take properties: items
-3. Will have separate desktop and mobile menus
-*/
-
 class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             active: false
         }
+
+        this.itemElements = this.getItemElements();
     }
 
-    toggleActive() {
-        this.setState({active: !this.state.active});
+    getItemElements() {
+        return (
+            <>
+                {this.props.items.map(function(item, index) {
+                    return (
+                        <a href={item.href} className="fpsNavItem" key={index}>
+                            <div className="fpsNavItem-textContainer center-vertical"><span className="fpsNavItem-text center-vertical">{item.label}</span></div>
+                        </a> 
+                    )
+                })}
+            </>
+        )
+    }
+
+    getDesktopItemElements() {
+        return 
     }
 
     render() {
         return (
-            <React.Fragment>
+            <>
                 {/* desktop */}
+                <div className={'fpsNav fpsNav-desktop' + (this.props.active ? ' active' : '')}>
+                    {this.itemElements}
+                </div>
 
                 {/* mobile */}
                 <div className={'fpsNav fpsNav-mobile' + (this.props.active ? ' active' : '')}>
-                    {
-                        this.props.items.map(function(item, index) {
-                            return (
-                               <a href={item.href} className="fpsNavItem" key={index}>
-                                   <div className="center-vertical">{item.label}</div>
-                               </a> 
-                            )
-                        })
-                    }
+                    {this.itemElements}
                 </div>
-            </React.Fragment>
+            </>
         );
     }
 }

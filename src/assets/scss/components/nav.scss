@@ -1,11 +1,16 @@
 .fpsNav {
-    display: none;
+    visibility: hidden;
+    transition: visibility 1s linear;
+
+    display: block;
     position: absolute;
+    flex-flow: row wrap;
+    background-color: transparent;
     width: 100%;
     height: 100%;
-    background-color: $white;
     text-align: center;
     z-index: 80;
+    text-transform: uppercase;
 
     a {
         color: $red;
@@ -15,13 +20,62 @@
 }
 
 .fpsNav-desktop {
+    display: flex; 
+
+    .fpsNavItem {
+        flex: 1;
+        position: relative;
+        border-left: 1px solid $red;
+        overflow: hidden;
+        
+        &:first-child {
+            border-left: none;
+        }
+    }
+
+    .fpsNavItem-textContainer {
+        position: absolute;
+        width:100%;
+        background-color: $white;
+        border-left: 1px solid lime;
+        height: 100%;
+
+        animation-name: fpsNavItem-textContainer-inactive;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+
     &.active {
-        display: block;
+        visibility: visible;
+
+        .fpsNavItem-textContainer {
+            animation-name: fpsNavItem-textContainer-active;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+    }
+}
+
+@keyframes fpsNavItem-textContainer-active {
+    from {
+        right: -100%;
+    }
+    to {
+        right: -1px;
+    }
+}
+
+@keyframes fpsNavItem-textContainer-inactive {
+    from {
+        right: -1px;
+    }
+    to {
+        right: -100%;
     }
 }
 
 .fpsNav-mobile {
-    flex-flow: row wrap;
+    background-color: $white;
 
     &.active {
         display: none;
@@ -43,6 +97,7 @@
     .fpsNav-mobile {
         &.active {
             display: flex;
+            visibility: visible;
         }
     }
 }
