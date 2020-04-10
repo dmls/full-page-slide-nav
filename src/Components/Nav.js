@@ -16,18 +16,22 @@ class Nav extends React.Component {
         }
     }
 
+    toggleActive() {
+        this.setState({active: !this.state.active});
+    }
+
     render() {
         return (
             <React.Fragment>
                 {/* desktop */}
 
                 {/* mobile */}
-                <div className={'fpsNav fpsNav-mobile' + (this.state.active ? ' active' : '')}>
+                <div className={'fpsNav fpsNav-mobile' + (this.props.active ? ' active' : '')}>
                     {
                         this.props.items.map(function(item, index) {
                             return (
                                <a href={item.href} className="fpsNavItem" key={index}>
-                                   <div>{item.label}</div>
+                                   <div className="center-vertical">{item.label}</div>
                                </a> 
                             )
                         })

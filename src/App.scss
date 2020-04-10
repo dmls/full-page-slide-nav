@@ -1,5 +1,9 @@
 // Utils
+@import './assets/scss/utils';
 @import './assets/scss/variables.scss';
 
 // Components
-@import './assets/scss/nav';
+@import './assets/scss/global';
+@import './assets/scss/components/header';
+@import './assets/scss/components/burger';
+@import './assets/scss/components/nav';

@@ -3,28 +3,15 @@ import ReactDOM from 'react-dom';
 import './App.scss';
 import * as serviceWorker from './serviceWorker';
 
-import Nav from './Components/Nav';
+// Internal
+import Header from './Components/Header';
 
-let navItems = [{
-  label: 'Home',
-  href: '#' 
-}, {
-  label: 'Services',
-  href: '#'
-}, {
-  label: 'About',
-  href: '#'
-}, {
-  label: 'Contact',
-  href: '#'
-}];
-
-document.body.style.backgroundImage = 'url("https://w.wallhaven.cc/full/nk/wallhaven-nko7vq.jpg")';
+document.body.style.background = 'url("https://w.wallhaven.cc/full/nk/wallhaven-nko7vq.jpg") no-repeat center center fixed';
 document.body.style.backgroundSize = 'cover';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Nav items={navItems} />
+    <Header />
   </React.StrictMode>,
   document.getElementById('root')
 );
