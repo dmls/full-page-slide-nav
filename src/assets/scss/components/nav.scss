@@ -27,6 +27,8 @@
         position: relative;
         border-left: 1px solid $red;
         overflow: hidden;
+
+        transform: skewX(-25deg);
         
         &:first-child {
             border-left: none;
@@ -43,6 +45,10 @@
         animation-name: fpsNavItem-textContainer-inactive;
         animation-duration: 1s;
         animation-fill-mode: forwards;
+    }
+
+    .fpsNavItem-text {
+        transform: skewX(25deg);
     }
 
     &.active {

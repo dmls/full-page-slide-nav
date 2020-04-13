@@ -16,7 +16,9 @@ class Nav extends React.Component {
                 {this.props.items.map(function(item, index) {
                     return (
                         <a href={item.href} className="fpsNavItem" key={index}>
-                            <div className="fpsNavItem-textContainer center-vertical"><span className="fpsNavItem-text center-vertical">{item.label}</span></div>
+                            <div className="fpsNavItem-textContainer center-vertical">
+                                <div className="fpsNavItem-text center-vertical">{item.label}</div>
+                            </div>
                         </a> 
                     )
                 })}
