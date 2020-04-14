@@ -1,8 +1,10 @@
+$slActiveDelay: .5s;
+$slActiveAnimDuration: 1s;
+$slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
+
 .fpsNav {
     visibility: hidden;
-    transition: visibility 1s linear;
-
-    display: block;
+    display: flex;
     position: absolute;
     flex-flow: row wrap;
     background-color: transparent;
@@ -20,12 +22,8 @@
     }
 }
 
-$slActiveDelay: .5s;
-$slActiveAnimDuration: 1s;
-$slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
-
 .fpsNav-desktop {
-    display: flex; 
+    transition: visibility 1s linear;
 
     .fpsNavItem {
         flex: 1;
@@ -133,7 +131,7 @@ $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
 @media screen and (max-width: $mobileBreak) {
     .fpsNav-desktop {
         &.active {
-            display: none;
+            visibility: hidden;
         }
     }
 
