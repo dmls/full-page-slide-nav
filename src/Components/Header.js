@@ -27,16 +27,16 @@ class Header extends React.Component {
     render() {
         return (
             <React.Fragment>
-            <div className='fpsHeader'>
-                <Slider
-                className="float-right"
-                color="#fff"
-                active={this.state.navActive}
-                onClick={() => {this.setState({navActive: !this.state.navActive})}}
-                />
-            </div>
+                <Nav items={this.navItems} active={this.state.navActive} />
 
-            <Nav items={this.navItems} active={this.state.navActive} />
+                <div className='fpsHeader'>
+                    <Slider
+                    className="float-right"
+                    color="#fff"
+                    active={this.state.navActive}
+                    onClick={() => {this.setState({navActive: !this.state.navActive})}}
+                    />
+                </div>
             </React.Fragment>
         );
     }

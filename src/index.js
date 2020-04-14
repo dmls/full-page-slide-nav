@@ -5,13 +5,13 @@ import * as serviceWorker from './serviceWorker';
 
 // Internal
 import Header from './Components/Header';
-
-document.body.style.background = 'url("https://w.wallhaven.cc/full/nk/wallhaven-nko7vq.jpg") no-repeat center center fixed';
-document.body.style.backgroundSize = 'cover';
+import Content from './Components/Content';
 
 ReactDOM.render(
   <React.StrictMode>
     <Header />
+
+    <Content />
   </React.StrictMode>,
   document.getElementById('root')
 );
