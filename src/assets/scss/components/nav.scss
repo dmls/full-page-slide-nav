@@ -20,6 +20,10 @@
     }
 }
 
+$slActiveDelay: .5s;
+$slActiveAnimDuration: 1s;
+$slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
+
 .fpsNav-desktop {
     display: flex; 
 
@@ -27,12 +31,18 @@
         flex: 1;
         position: relative;
         border-left: 2px solid $white;
+        margin-right: -1px;
         overflow: hidden;
-
         transform: skewX(-25deg);
+
+        animation-name: fpsNavItem-inactive;
+        animation-duration: 0s;
+        -webkit-animation-delay: $slActiveAnimDurationTotal;
+        animation-delay: $slActiveAnimDurationTotal;
+        animation-fill-mode: forwards;
         
-        &:first-child {
-            border-left: none;
+        &:last-child {
+            border-right: 2px solid $white;
         }
     }
 
@@ -45,7 +55,7 @@
 
         animation-name: fpsNavItem-textContainer-inactive;
         animation-duration: 1s;
-        animation-fill-mode: forwards;
+        animation-fill-mode: backwards;
     }
 
     .fpsNavItem-text {
@@ -55,13 +65,37 @@
     &.active {
         visibility: visible;
 
+        .fpsNavItem {
+            animation-name: fpsNavItem-active;
+            animation-duration: 0s;
+            animation-fill-mode: forwards;
+        }
+
         .fpsNavItem-textContainer {
             animation-name: fpsNavItem-textContainer-active;
-            animation-duration: 1s;
-            -webkit-animation-delay: .5s;
-            animation-delay: .5s;
+            animation-duration: $slActiveAnimDuration;
+            -webkit-animation-delay: $slActiveDelay;
+            animation-delay: $slActiveDelay;
             animation-fill-mode: backwards;
         }
+    }
+}
+
+@keyframes fpsNavItem-active {
+    from {
+        border-left: 2px solid $white;
+    }
+    to {
+        border-left: none;
+    }
+}
+
+@keyframes fpsNavItem-inactive {
+    from {
+        border-left: none;
+    }
+    to {
+        border-left: 2px solid $white;
     }
 }
 
