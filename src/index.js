@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.scss';
+import { Helmet } from 'react-helmet';
 import * as serviceWorker from './serviceWorker';
 
 // Internal
@@ -9,6 +10,10 @@ import Content from './Components/Content';
 
 ReactDOM.render(
   <React.StrictMode>
+    <Helmet>
+      <title>Full Page Slide Navigation</title>
+    </Helmet>
+
     <Header />
 
     <Content />
