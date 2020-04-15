@@ -1,5 +1,5 @@
-$slActiveDelay: .5s;
-$slActiveAnimDuration: 1s;
+$slActiveDelay: .2s;
+$slActiveAnimDuration: .5s;
 $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
 
 .fpsNav {
@@ -24,7 +24,7 @@ $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
 }
 
 .fpsNav-desktop {
-    transition: visibility 1s linear;
+    transition: visibility $slActiveAnimDuration linear;
 
     .fpsNavItem {
         flex: 1;
@@ -53,7 +53,7 @@ $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
         height: 100%;
 
         animation-name: fpsNavItem-textContainer-inactive;
-        animation-duration: 1s;
+        animation-duration: $slActiveAnimDuration;
         animation-fill-mode: backwards;
     }
 
