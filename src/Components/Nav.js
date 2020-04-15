@@ -1,39 +1,48 @@
 import React from 'react';
 
-/*
-1. Will have method that triggers 'active' so that 
-users can create an instance of the element and decide
-what triggers it.
-2. Will take properties: items
-3. Will have separate desktop and mobile menus
-*/
-
 class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             active: false
         }
+
+        this.itemElements = this.getItemElements();
+    }
+
+    getItemElements() {
+        return (
+            <>
+                {this.props.items.map(function(item, index) {
+                    return (
+                        <a href={item.href} className="fpsNavItem" key={index}>
+                            <div className="fpsNavItem-textContainer center-vertical">
+                                <div className="fpsNavItem-text center-vertical">{item.label}</div>
+                            </div>
+                        </a> 
+                    )
+                })}
+            </>
+        )
+    }
+
+    getDesktopItemElements() {
+        return 
     }
 
     render() {
         return (
-            <React.Fragment>
+            <>
                 {/* desktop */}
+                <div className={'fpsNav fpsNav-desktop' + (this.props.active ? ' active' : '')}>
+                    {this.itemElements}
+                </div>
 
                 {/* mobile */}
-                <div className={'fpsNav fpsNav-mobile' + (this.state.active ? ' active' : '')}>
-                    {
-                        this.props.items.map(function(item, index) {
-                            return (
-                               <a href={item.href} className="fpsNavItem" key={index}>
-                                   <div>{item.label}</div>
-                               </a> 
-                            )
-                        })
-                    }
+                <div className={'fpsNav fpsNav-mobile' + (this.props.active ? ' active' : '')}>
+                    {this.itemElements}
                 </div>
-            </React.Fragment>
+            </>
         );
     }
 }
