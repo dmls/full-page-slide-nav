@@ -1,3 +1,6 @@
+$navBg: rgba(18, 19, 23, .8);
+$navTextColor: $white;
+
 $slActiveDelay: .2s;
 $slActiveAnimDuration: .5s;
 $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
@@ -17,11 +20,14 @@ $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
     font-size: 2rem;
 
     a {
-        color: $red;
+        color: $navTextColor;
         text-decoration: none;
         font-weight: bold;
     }
 }
+
+$fpsNavItemBorderActive: 2px solid $white;
+$fpsNavItemBorderInactive: none;
 
 .fpsNav-desktop {
     transition: visibility $slActiveAnimDuration linear;
@@ -29,7 +35,7 @@ $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
     .fpsNavItem {
         flex: 1;
         position: relative;
-        border-left: 2px solid $white;
+        border-left: $fpsNavItemBorderActive;
         margin-right: -1px;
         overflow: hidden;
         transform: skewX(-25deg);
@@ -41,15 +47,15 @@ $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
         animation-fill-mode: forwards;
         
         &:last-child {
-            border-right: 2px solid $white;
+            border-right: $fpsNavItemBorderActive;
         }
     }
 
     .fpsNavItem-textContainer {
         position: absolute;
         width:100%;
-        background-color: $white;
-        border-left: 2px solid $red;
+        background: $navBg;
+        border-left: 2px solid $white;
         height: 100%;
 
         animation-name: fpsNavItem-textContainer-inactive;
@@ -82,42 +88,45 @@ $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
 
 @keyframes fpsNavItem-active {
     from {
-        border-left: 2px solid $white;
+        border-left: $fpsNavItemBorderActive;
     }
     to {
-        border-left: none;
+        border-left: $fpsNavItemBorderInactive;
     }
 }
 
 @keyframes fpsNavItem-inactive {
     from {
-        border-left: none;
+        border-left: $fpsNavItemBorderInactive;
     }
     to {
-        border-left: 2px solid $white;
+        border-left: $fpsNavItemBorderActive;
     }
 }
 
+$inactiveTextContainPosRight: -101%;
+$activeTextContainPosRight: -1px;
+
 @keyframes fpsNavItem-textContainer-active {
     from {
-        right: -101%;
+        right: $inactiveTextContainPosRight;
     }
     to {
-        right: -1px;
+        right: $activeTextContainPosRight;
     }
 }
 
 @keyframes fpsNavItem-textContainer-inactive {
     from {
-        right: -1px;
+        right: $activeTextContainPosRight;
     }
     to {
-        right: -100%;
+        right: $inactiveTextContainPosRight;
     }
 }
 
 .fpsNav-mobile {
-    background-color: $white;
+    background: $navBg;
 
     &.active {
         display: none;
@@ -125,7 +134,7 @@ $slActiveAnimDurationTotal: $slActiveDelay + $slActiveAnimDuration;
 
     .fpsNavItem {
         width: 100%;
-        border-bottom: 1px solid $gray;
+        border-bottom: 1px solid $white;
     }
 }
 
